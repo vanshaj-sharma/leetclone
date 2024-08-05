@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import RecoilContextProvider from "./lib/recoilContextProvider";
 
 export const metadata: Metadata = {
   title: "LeetClone",
@@ -13,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <RecoilContextProvider>{children}</RecoilContextProvider>
+      </body>
     </html>
   );
 }
