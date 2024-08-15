@@ -1,3 +1,10 @@
+import Topbar from "./components/Topbar/Topbar";
+
 export default function Home() {
-  return <main>This is sparta</main>;
+  return (
+    <main className="bg-dark-layer-2 min-h-screen">
+      <Topbar />
+      This is sparta
+    </main>
+  );
 }
