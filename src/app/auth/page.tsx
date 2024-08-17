@@ -19,9 +19,9 @@ const AuthPage: React.FC<AuthPageProps> = () => {
   useEffect(() => {
     if (user) router.push("/");
     if (!loading && !user) setPageLoading(false);
-  }, [user, router]);
+  }, [user, router, loading]);
 
-  if (pageLoading) return null;
+  if (pageLoading) return <div>this is loading</div>;
   return (
     <div className="bg-gradient-to-b from-gray-600 to-black h-screen relative">
       <div className="max-w-7xl mx-auto">

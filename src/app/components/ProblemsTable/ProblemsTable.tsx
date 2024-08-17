@@ -26,7 +26,7 @@ const ProblemsTable: React.FC<ProblemsTableProps> = () => {
     };
     window.addEventListener("keydown", handleEsc);
     return () => window.removeEventListener("keydown", handleEsc);
-  }, [KeyboardEvent]);
+  }, []);
   return (
     <>
       <tbody className="text-white">

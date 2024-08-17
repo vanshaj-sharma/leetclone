@@ -3,12 +3,15 @@ import React from "react";
 import Link from "next/link";
 import { auth } from "@/app/firebase/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Logout from "../Buttons/Logout";
+import { useSetRecoilState } from "recoil";
+import { authModalState } from "@/app/store/atoms/authModalAtoms";
 
 type TopbarProps = {};
 
 const Topbar: React.FC<TopbarProps> = () => {
   const [user] = useAuthState(auth);
-
+  const setAuthModalState = useSetRecoilState(authModalState);
   return (
     <nav className="relative flex h-[50px] w-full shrink-0 items-center px-5 bg-dark-layer-1 text-dark-gray-7">
       <div
@@ -30,7 +33,16 @@ const Topbar: React.FC<TopbarProps> = () => {
             </a>
           </div>
           {!user && (
-            <Link href="/auth">
+            <Link
+              href="/auth"
+              onClick={() => {
+                setAuthModalState((prev) => ({
+                  ...prev,
+                  isOpen: true,
+                  type: "login",
+                }));
+              }}
+            >
               <button className="bg-dark-fill-3 py-1 px-2 cursor-pointer rounded ">
                 Sign In
               </button>
@@ -51,6 +63,8 @@ const Topbar: React.FC<TopbarProps> = () => {
               </div>
             </div>
           )}
+
+          {user && <Logout />}
         </div>
       </div>
     </nav>
