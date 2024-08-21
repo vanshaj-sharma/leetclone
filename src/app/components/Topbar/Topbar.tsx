@@ -6,6 +6,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import Logout from "../Buttons/Logout";
 import { useSetRecoilState } from "recoil";
 import { authModalState } from "@/app/store/atoms/authModalAtoms";
+import Image from "next/image";
 
 type TopbarProps = {};
 
@@ -18,7 +19,13 @@ const Topbar: React.FC<TopbarProps> = () => {
         className={`flex w-full items-center justify-between max-w-[1200px] mx-auto`}
       >
         <Link href={"/"} className="flex items-center justify-center h-20 ">
-          <img src="/logo-full.png" alt="LeetClone" className="" />
+          {/* <img src="/logo-full.png" alt="LeetClone" className="" /> */}
+          <Image
+            src="/logo-full.png"
+            alt="LeetClone"
+            height={100}
+            width={100}
+          />
         </Link>
 
         <div className="flex items-center space-x-4 flex-1 justify-end">
